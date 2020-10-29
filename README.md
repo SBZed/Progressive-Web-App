@@ -40,9 +40,9 @@ npm install --save axios
     if('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./serviceworker.js')
-        .then((reg) => console.log('Success: ', reg.scope))
-        .catch((err) => console.log('Failure: ', err));
-    })
+            .then((reg) => console.log('Success: ', reg.scope))
+            .catch((err) => console.log('Failure: ', err));
+        })
     }
 </script>
 ```
@@ -127,23 +127,25 @@ change in index.html file
 
 ## 4. Deployment
 ### 4.1. Lighthouse
-    - chrome Developer Tool Extension.
-    - Click on "General Report", it'll create audit of your application according to PWA criteria.
-    - you will get one 
-    - if all are okay, you are ready to host your site.
+- chrome Developer Tool Extension.
+- Click on "General Report", it'll create audit of your application according to PWA criteria.
+- you will get one 
+- if all are okay, you are ready to host your site.
 ### 4.2. Publish
-    - Build your project
-    ```sh
-    npm run build
-    ```
-    - to host/publish your project on internet, go to https://www.netlify.com/
-    - do login/signup
-    - drag and drop your `build` folder in space netlify given
-    - within 2 minutes your site will be published and you'll have link e.g. https://reverent-lalande-2b2235.netlify.app/
+- Build your project
+```sh
+npm run build
+```
+- to host/publish your project on internet, go to https://www.netlify.com/
+- do login/signup
+- drag and drop your `build` folder in space netlify given
+- within 2 minutes your site will be published and you'll have link e.g. https://reverent-lalande-2b2235.netlify.app/
+- can publish also on https://progressiveapp.store
 
 ## 5. Install your as Desktop Application
 - When you open fully certficed and published PWA Application in browser of desktop/mobile (Check Lighthouse report for it), you will get option to install that app on desktop/mobile.
+- 
 ![install-pwa-on-desktop](./public/images/install-on-desktop.png)
 
 ## 6. Resource
-- https://www.youtube.com/watch?v=IaJqMcOMuDM
+- [Build and Deploy a React PWA by JavaScript Mastery](https://www.youtube.com/watch?v=IaJqMcOMuDM)
