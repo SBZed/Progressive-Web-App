@@ -144,8 +144,10 @@ npm run build
 
 ## 5. Install your as Desktop Application
 - When you open fully certficed and published PWA Application in browser of desktop/mobile (Check Lighthouse report for it), you will get option to install that app on desktop/mobile.
-- 
+
+
 ![install-pwa-on-desktop](./public/images/install-on-desktop.png)
 
 ## 6. Resource
+- [When should you use a PWA?](https://www.youtube.com/watch?v=DfFlBWCQjzA)
 - [Build and Deploy a React PWA by JavaScript Mastery](https://www.youtube.com/watch?v=IaJqMcOMuDM)
