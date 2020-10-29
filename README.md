@@ -17,20 +17,20 @@ Progressive Web Apps provide you with a unique opportunity to deliver a web expe
 ```sh
 npm init react-app pwt_react_app
 ```
-We are using `axios` to make a GET request to the API for the weather data.
+We are using `Axios` to make a GET request to the API for the weather data.
 ```sh
 npm install --save axios
 ```
-- refer code in repo for further understanding
+- refer code in the repo for further understanding
 
 ## 2. Service Worker
-- We now focus on `public` folder now. not on `src` folder.
+- From here on, We will focus on the `public` folder. not on the `src` folder.
 
 ### 2.1. Adding service worker
 - Service Worker:
-    - A javascript file which runs all the time.
-    - as soon as you open page it's start running and even run after page is close.
-    - can send push notification from mobile phone.
+    - A javascript file that runs all the time.
+    - as soon as you open the page it starts running and even runs after the page is close.
+    - can send push notification from a mobile phone.
     - can also show something to the page even if you're offline.
 
 #### 2.1.1. Register Service worker
@@ -48,13 +48,13 @@ npm install --save axios
 ```
 
 #### 2.1.2. Service Workers in Developer tools
-- Chrome Developer Tools -> Application -> Service Workers, check "Update on reload" checkbox for testing our service worker.
+- Chrome Developer Tools -> Application -> Service Workers, check the "Update on reload" checkbox for testing our service worker.
 
 ### 2.2. Implementing Service Worker
 - three steps:
     1. Install Service worker: Open cache in storage and add above CACHE_NAME in it
     2. Listen for requests
-    3. Activate the Service Worker: We often gonna have lot of version of cache, in here we going to remove all previous cache and just keep the new one
+    3. Activate the Service Worker: We often gonna have a lot of version of cache, in here we going to remove all previous cache and just keep the new one
 
 add following code in serviceworker.js
 ```js
@@ -92,7 +92,7 @@ self.addEventListener('activate', (event) => {
 ```
 
 ## 3. manifest.json
-- it's a just simple json file
+- it's a just simple JSON file
 ```json
 {
     "short_name": "Weather App",
@@ -128,7 +128,7 @@ change in index.html file
 ## 4. Deployment
 ### 4.1. Lighthouse
 - chrome Developer Tool Extension.
-- Click on "General Report", it'll create audit of your application according to PWA criteria.
+- Click on "General Report", it'll create an audit of your application according to PWA criteria.
 - you will get one 
 - if all are okay, you are ready to host your site.
 ### 4.2. Publish
@@ -136,14 +136,14 @@ change in index.html file
 ```sh
 npm run build
 ```
-- to host/publish your project on internet, go to https://www.netlify.com/
+- to host/publish your project on the internet, go to https://www.netlify.com/
 - do login/signup
 - drag and drop your `build` folder in space netlify given
-- within 2 minutes your site will be published and you'll have link e.g. https://reverent-lalande-2b2235.netlify.app/
+- within 2 minutes your site will be published and you'll have a link e.g. https://reverent-lalande-2b2235.netlify.app/
 - can publish also on https://progressiveapp.store
 
 ## 5. Install App on Mobile/Desktop
-- When you open fully certficed and published PWA Application in browser of desktop/mobile (Check Lighthouse report for it), you will get option to install that app on desktop/mobile.
+- When you open a fully certified and published PWA Application in the browser of desktop/mobile (Check Lighthouse report for it), you will get the option to install that app on desktop/mobile.
 
 
 ![install-pwa-on-desktop](./public/images/install-on-desktop.png)
