@@ -4,7 +4,7 @@
 2. Service Worker
 3. mainfest.json
 4. Deployment
-5. Install your as Desktop Application
+5. Install App on Mobile/Desktop
 6. Resource
 
 ![Build a PWA](https://camo.githubusercontent.com/b4872b359c3e809aa6644183bc7f289978fc3445/68747470733a2f2f692e696d6775722e636f6d2f3363736f777a6a2e706e67)
@@ -142,7 +142,7 @@ npm run build
 - within 2 minutes your site will be published and you'll have link e.g. https://reverent-lalande-2b2235.netlify.app/
 - can publish also on https://progressiveapp.store
 
-## 5. Install your as Desktop Application
+## 5. Install App on Mobile/Desktop
 - When you open fully certficed and published PWA Application in browser of desktop/mobile (Check Lighthouse report for it), you will get option to install that app on desktop/mobile.
 
 
