@@ -35,17 +35,17 @@ npm install --save axios
 
 #### 2.1.1. Register Service worker
 - Add following code in index.html after `<div id="root"></div>`.
-    ```js
-    <script>
-        if('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./serviceworker.js')
-            .then((reg) => console.log('Success: ', reg.scope))
-            .catch((err) => console.log('Failure: ', err));
-        })
-        }
-    </script>
-    ```
+```js
+<script>
+    if('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./serviceworker.js')
+        .then((reg) => console.log('Success: ', reg.scope))
+        .catch((err) => console.log('Failure: ', err));
+    })
+    }
+</script>
+```
 
 #### 2.1.2. Service Workers in Developer tools
 - Chrome Developer Tools -> Application -> Service Workers, check "Update on reload" checkbox for testing our service worker.
@@ -57,73 +57,73 @@ npm install --save axios
     3. Activate the Service Worker: We often gonna have lot of version of cache, in here we going to remove all previous cache and just keep the new one
 
 add following code in serviceworker.js
-    ```js
-    const CACHE_NAME = "version-1"; // Storage for browser
-    const urlsToCache = [ 'index.html', 'offline.html' ];
-    const self = this;
-    // Install SW
-    self.addEventListener('install', (event) => {
-        event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
-                    console.log('Opened cache');
-                    return cache.addAll(urlsToCache);
-                })
-        )
-    });
-    // Listen for requests
-    self.addEventListener('fetch', (event) => {
-        event.respondWith(caches.match(event.request).then(() => {
-                    return fetch(event.request).catch(() => caches.match('offline.html'))
-                })
-        )
-    });
-    // Activate the SW
-    self.addEventListener('activate', (event) => {
-        const cacheWhitelist = [];
-        cacheWhitelist.push(CACHE_NAME);
-        event.waitUntil(caches.keys().then((cacheNames) => Promise.all(
-                cacheNames.map((cacheName) => {
-                    if(!cacheWhitelist.includes(cacheName)) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            ))
-        )
-    });
-    ```
+```js
+const CACHE_NAME = "version-1"; // Storage for browser
+const urlsToCache = [ 'index.html', 'offline.html' ];
+const self = this;
+// Install SW
+self.addEventListener('install', (event) => {
+    event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
+                console.log('Opened cache');
+                return cache.addAll(urlsToCache);
+            })
+    )
+});
+// Listen for requests
+self.addEventListener('fetch', (event) => {
+    event.respondWith(caches.match(event.request).then(() => {
+                return fetch(event.request).catch(() => caches.match('offline.html'))
+            })
+    )
+});
+// Activate the SW
+self.addEventListener('activate', (event) => {
+    const cacheWhitelist = [];
+    cacheWhitelist.push(CACHE_NAME);
+    event.waitUntil(caches.keys().then((cacheNames) => Promise.all(
+            cacheNames.map((cacheName) => {
+                if(!cacheWhitelist.includes(cacheName)) {
+                    return caches.delete(cacheName);
+                }
+            })
+        ))
+    )
+});
+```
 
 ## 3. manifest.json
 - it's a just simple json file
-    ```json
-    {
-        "short_name": "Weather App",
-        "name": "Weather App PWA",
-        "icons": [
-            {
-                "src": "/images/logo.png",
-                "type": "image/png",
-                "sizes": "1024x1024"
-            }
-        ],
-        "start_url": ".",
-        "display": "standalone",
-        "theme_color": "#000000",
-        "background_color": "#ffffff"
-    }
-    ```
+```json
+{
+    "short_name": "Weather App",
+    "name": "Weather App PWA",
+    "icons": [
+        {
+            "src": "/images/logo.png",
+            "type": "image/png",
+            "sizes": "1024x1024"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
+```
 
 change in index.html file
-    ```html
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="./images/logo.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="Modern PWA Weather React Application"/>
-        <link rel="apple-touch-icon" href="./images/logo.png" />
-        <link rel="manifest" href="./manifest.json" />
-        <title>Weather App</title>
-    </head>
-    ```
+```html
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="./images/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Modern PWA Weather React Application"/>
+    <link rel="apple-touch-icon" href="./images/logo.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>Weather App</title>
+</head>
+```
 
 ## 4. Deployment
 ### 4.1. Lighthouse
